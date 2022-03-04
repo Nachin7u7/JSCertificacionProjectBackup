@@ -1,11 +1,25 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PersonaModule } from './modules/persona/persona.module';
 import { UserModule } from './modules/user/user.module';
 
 @Module({
-  imports: [PersonaModule, UserModule],
+  imports: [
+      TypeOrmModule.forRoot({
+        name: 'default',
+        type: 'postgres',
+        host: 'localhost',
+        port: 5432,
+        username: 'postgres',
+        password: 'root',
+        database: 'kronnosDB',
+        schema:'public',
+        synchronize: true,
+        entities:[__dirname + '/model/**/*{.ts,.js}'],
+        autoLoadEntities: true,
+      }),
+    UserModule],
   controllers: [AppController],
   providers: [AppService],
 })
