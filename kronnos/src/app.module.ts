@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
 import { NewsModule } from './modules/news/news.module';
-
+import { SuggestionModule } from './modules/suggestion/suggestion.module';
 
 @Module({
   imports: [
@@ -22,7 +22,7 @@ import { NewsModule } from './modules/news/news.module';
       autoLoadEntities: true,
     }),
     UserModule,
-    NewsModule],
+    NewsModule,SuggestionModule],
   controllers: [AppController],
   providers: [AppService],
 })
