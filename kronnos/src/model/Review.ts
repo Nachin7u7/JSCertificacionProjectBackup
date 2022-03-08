@@ -8,6 +8,8 @@ import {
     PrimaryGeneratedColumn,
   } from "typeorm";
 import { User } from "./User";
+import { Comment } from "./Comment";
+
   
   @Index("ixfk_review_user", ["idUser"], {})
   @Index("pk_review", ["idReview"], { unique: true })
@@ -31,5 +33,11 @@ import { User } from "./User";
     @ManyToOne(() => User, (user) => user.reviews)
     @JoinColumn([{ name: "id_user", referencedColumnName: "idUser" }])
     idUser2: User;
+
+    @OneToMany(
+      () => Comment,
+      (comment) => comment.idReview2
+    )
+    comments: Comment[];
   
   }
