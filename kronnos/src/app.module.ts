@@ -15,7 +15,7 @@ import { CommentModule } from './modules/comment/comment.module';
         host: 'localhost',
         port: 5432,
         username: 'postgres',
-        password: 'root123',
+        password: 'root',
         database: 'kronnosDB',
         schema:'public',
         synchronize: true,

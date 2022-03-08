@@ -2,9 +2,13 @@ import {
     Column,
     Entity,
     Index,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
   } from "typeorm";
+import { User } from "./User";
 
+    @Index("ixfk_comment_user", ["idUser"], {})
   @Index("pk_comment",["idComment"],{unique:true})
   @Entity("comment",{schema:"public"})
   export class Comment{
@@ -25,6 +29,10 @@ import {
 
       @Column("integer", { name: "likes"})
       likes: number;
+
+    @ManyToOne(() => User, (user) => user.comments)
+    @JoinColumn([{ name: "id_user", referencedColumnName: "idUser" }])
+    idUser2: User;
 
       
   }

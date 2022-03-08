@@ -5,6 +5,9 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
   } from "typeorm";
+import { News } from "./News";
+import { Comment } from "./Comment";
+import { Suggestion } from "./Suggestion";
   
   @Index("pk_user", ["idUser"], { unique: true })
   @Entity("user", { schema: "public" })
@@ -36,5 +39,25 @@ import {
     @Column("timestamp without time zone", { name: "Created" })
     Created: Date;
 
+    @OneToMany(
+      () => News,
+      (news) => news.idUser2
+    )
+    noticias: News[];
+
+    @OneToMany(
+      () => Comment,
+      (comment) => comment.idUser2
+    )
+    comments: Comment[];
+
+    @OneToMany(
+      () => Suggestion,
+      (suggestion) => suggestion.idUser2
+    )
+    suggestions: Suggestion[];
+
+
+  
   
   }
