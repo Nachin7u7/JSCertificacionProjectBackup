@@ -1,4 +1,4 @@
-import { Body, Controller, Get, HttpStatus, Param, Post } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post } from '@nestjs/common';
 import { Review } from 'src/model/Review';
 import { ReviewService } from '../services/review.service';
 
@@ -25,11 +25,11 @@ export class ReviewController {
     //TODO delete review?
 
     @Delete(':id')
-      async deleteUser(@Param('id') id: number) {
+      async deleteReview(@Param('id') id: number) {
         await this.reviewService.deleteReview(id);
         return {
           statusCode: HttpStatus.OK,
-          message: 'User deleted successfully',
+          message: 'Review deleted successfully',
         };
     }
 
