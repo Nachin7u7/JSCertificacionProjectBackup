@@ -8,6 +8,7 @@ import {
 import { News } from "./News";
 import { Comment } from "./Comment";
 import { Suggestion } from "./Suggestion";
+import { Review } from "./Review";
   
   @Index("pk_user", ["idUser"], { unique: true })
   @Entity("user", { schema: "public" })
@@ -56,6 +57,12 @@ import { Suggestion } from "./Suggestion";
       (suggestion) => suggestion.idUser2
     )
     suggestions: Suggestion[];
+
+    @OneToMany(
+      () => Review,
+      (review) => review.idUser2
+    )
+    reviews: Review[];
 
 
   
