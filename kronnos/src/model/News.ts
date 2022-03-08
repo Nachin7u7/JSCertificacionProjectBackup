@@ -4,9 +4,11 @@ import {
     Index,
     JoinColumn,
     ManyToOne,
+    OneToMany,
     PrimaryGeneratedColumn,
   } from "typeorm";
 import { User } from "./User";
+import { Comment } from "./Comment";
   
   @Index("ixfk_news_user", ["idUser"], {})
   @Index("pk_news", ["idNews"], { unique: true })
@@ -39,4 +41,10 @@ import { User } from "./User";
     @ManyToOne(() => User, (user) => user.noticias)
     @JoinColumn([{ name: "id_user", referencedColumnName: "idUser" }])
     idUser2: User;
+
+    @OneToMany(
+      () => Comment,
+      (comment) => comment.idNews2
+    )
+    comments: Comment[];
   }

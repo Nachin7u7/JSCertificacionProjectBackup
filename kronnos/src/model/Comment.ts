@@ -6,9 +6,13 @@ import {
     ManyToOne,
     PrimaryGeneratedColumn,
   } from "typeorm";
+import { News } from "./News";
+import { Review } from "./Review";
 import { User } from "./User";
 
     @Index("ixfk_comment_user", ["idUser"], {})
+    @Index("ixfk_comment_review", ["idReview"], {})
+    @Index("ixfk_comment_news", ["idNews"], {})
   @Index("pk_comment",["idComment"],{unique:true})
   @Entity("comment",{schema:"public"})
   export class Comment{
@@ -34,5 +38,12 @@ import { User } from "./User";
     @JoinColumn([{ name: "id_user", referencedColumnName: "idUser" }])
     idUser2: User;
 
+    @ManyToOne(() => News, (news) => news.comments)
+    @JoinColumn([{ name: "id_news", referencedColumnName: "idNews" }])
+    idNews2: News;
+
+    @ManyToOne(() => Review, (review) => review.comments)
+    @JoinColumn([{ name: "id_review", referencedColumnName: "idReview" }])
+    idReview2: Review;
       
   }
