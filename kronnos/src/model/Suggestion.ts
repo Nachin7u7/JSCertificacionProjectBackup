@@ -2,6 +2,7 @@ import {
     Column,
     Entity,
     Index,
+    JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
   } from "typeorm";
@@ -35,10 +36,10 @@ import { User } from "./User";
   
     @Column("timestamp without time zone", { name: "Updated" })
     Updated: Date;
-/*
-    @ManyToOne(() => User, (user) => user.usuarioRols)
+
+    @ManyToOne(() => User, (user) => user.suggestions)
     @JoinColumn([{ name: "id_user", referencedColumnName: "idUser" }])
-    idUser2: User;*/
+    idUser2: User;
 
 
   }
