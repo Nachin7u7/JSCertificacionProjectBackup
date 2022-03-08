@@ -23,4 +23,14 @@ export class ReviewController {
         return this.reviewService.findOneReview(id);
     }
     //TODO delete review?
+
+    @Delete(':id')
+      async deleteUser(@Param('id') id: number) {
+        await this.reviewService.deleteReview(id);
+        return {
+          statusCode: HttpStatus.OK,
+          message: 'User deleted successfully',
+        };
+    }
+
 }

@@ -5,6 +5,9 @@ import { DeleteResult, Repository } from 'typeorm';
 
 @Injectable()
 export class ReviewService {
+    deleteReview(id: number) {
+        throw new Error('Method not implemented.');
+    }
     
     constructor(
         @InjectRepository(Review)
@@ -23,8 +26,8 @@ export class ReviewService {
     }
 
     // TODO delete??
-    // async deleteReview(id: number):Promise<DeleteResult>{
-    //     return await this.reviewRespository.delete({idReview: id}); 
-    // }
+    async deleteReview(id: number):Promise<DeleteResult>{
+        return await this.reviewRespository.delete({idReview: id}); 
+    }
 
 }
