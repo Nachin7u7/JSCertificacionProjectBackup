@@ -7,6 +7,11 @@ export class UserController {
     constructor(
         public userService: UserService
     ) {}
+    @Post('save')
+    saveAlumno(@Body() user: User): Promise<User>{
+        return this.userService.saveUser(user);
+    }
+    
     @Get('all')
     async showAllUsers() {
       const users =  await this.userService.showAllUsers();
@@ -17,10 +22,6 @@ export class UserController {
       };
     }
 
-    @Post('save')
-    saveAlumno(@Body() user: User): Promise<User>{
-        return this.userService.saveUser(user);
-    }
     @Get('find/:id')
     findOne(@Param('id') id: number): Promise<User>{
         return this.userService.findOneUser(id);
@@ -33,5 +34,5 @@ export class UserController {
           statusCode: HttpStatus.OK,
           message: 'User deleted successfully',
         };
-      }
+    }
 }
