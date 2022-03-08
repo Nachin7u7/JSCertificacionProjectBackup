@@ -3,13 +3,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './modules/user/user.module';
-<<<<<<< HEAD
 import { ReviewModule } from './modules/review/review.module';
-=======
 import { NewsModule } from './modules/news/news.module';
 import { SuggestionModule } from './modules/suggestion/suggestion.module';
 import { CommentModule } from './modules/comment/comment.module';
->>>>>>> 375645341c57b957739ca58631d9de33dec2c5fa
 
 @Module({
   imports: [
@@ -27,14 +24,11 @@ import { CommentModule } from './modules/comment/comment.module';
         autoLoadEntities: true,
       }),
     UserModule,
-<<<<<<< HEAD
-    ReviewModule],
-=======
+    ReviewModule,
     CommentModule,
     SuggestionModule,
     NewsModule],
 
->>>>>>> 375645341c57b957739ca58631d9de33dec2c5fa
   controllers: [AppController],
   providers: [AppService],
 })
